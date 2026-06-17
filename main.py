@@ -1,6 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
+# No topo do arquivo main.py
+import models
+from database import engine
+
+# Cria as tabelas no banco de dados automaticamente ao iniciar
+models.Base.metadata.create_all(bind=engine)
+
 # 1. Instanciação da API
 app = FastAPI(title="API Inova Lab - Inventário Maker")
 
